@@ -1,11 +1,13 @@
 ﻿@page
-@model RajUniEFCoreRP3._1.Pages.Students.DeleteModel
+@model Students.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
 }
 
 <h1>Delete</h1>
+
+<p class="text-danger">@Model.ErrorMessage</p>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
