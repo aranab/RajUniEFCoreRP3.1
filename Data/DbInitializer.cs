@@ -1,14 +1,14 @@
-﻿using RajUniEFCoreRP3._1.Models;
+﻿using RajUniEFCoreRP3.Models;
 using System;
 using System.Linq;
 
-namespace RajUniEFCoreRP3._1.Data
+namespace RajUniEFCoreRP3.Data
 {
     public static class DbInitializer
-    {
+    {        
         public static void Initialize(SchoolContext context)
         {
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
 
             // Look for any students.
             if (context.Students.Any())

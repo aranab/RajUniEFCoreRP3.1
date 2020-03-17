@@ -1,4 +1,4 @@
-﻿namespace RajUniEFCoreRP3._1.Models
+﻿namespace RajUniEFCoreRP3.Models
 {
     public enum Grade
     {

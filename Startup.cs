@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using RajUniEFCoreRP3._1.Data;
+using RajUniEFCoreRP3.Data;
 
-namespace RajUniEFCoreRP3._1
+namespace RajUniEFCoreRP3
 {
     public class Startup
     {

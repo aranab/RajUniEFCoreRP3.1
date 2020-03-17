@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using RajUniEFCoreRP3._1.Models;
+using RajUniEFCoreRP3.Models;
 
-namespace RajUniEFCoreRP3._1.Data
+namespace RajUniEFCoreRP3.Data
 {
     public class SchoolContext : DbContext
     {

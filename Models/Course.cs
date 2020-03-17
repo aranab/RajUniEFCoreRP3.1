@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RajUniEFCoreRP3._1.Models
+namespace RajUniEFCoreRP3.Models
 {
     public class Course
     {

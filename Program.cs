@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using RajUniEFCoreRP3._1.Data;
+using RajUniEFCoreRP3.Data;
 using System;
 
-namespace RajUniEFCoreRP3._1
+namespace RajUniEFCoreRP3
 {
     public class Program
     {

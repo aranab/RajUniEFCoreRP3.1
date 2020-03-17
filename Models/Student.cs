@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RajUniEFCoreRP3._1.Models
+namespace RajUniEFCoreRP3.Models
 {
     public class Student
     {

@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using RajUniEFCoreRP3._1.Data;
-using RajUniEFCoreRP3._1.Models;
+using RajUniEFCoreRP3.Data;
+using RajUniEFCoreRP3.Models;
 
-namespace RajUniEFCoreRP3._1.Pages.Students
+namespace RajUniEFCoreRP3.Pages.Students
 {
     public class EditModel : PageModel
     {
