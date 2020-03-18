@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RajUniEFCoreRP3.Data;
 using RajUniEFCoreRP3.Models;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RajUniEFCoreRP3.Pages.Instructors
@@ -26,7 +27,9 @@ namespace RajUniEFCoreRP3.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructors.FirstOrDefaultAsync(m => m.ID == id);
+            Instructor = await _context.Instructors
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Instructor == null)
             {
@@ -42,14 +45,23 @@ namespace RajUniEFCoreRP3.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructors.FindAsync(id);
+            Instructor instructor = await _context.Instructors
+                .Include(i => i.CourseAssignments)
+                .SingleAsync(i => i.ID == id);
 
-            if (Instructor != null)
+            if (instructor == null)
             {
-                _context.Instructors.Remove(Instructor);
-                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
+            var deparments = await _context.Departments
+                .Where(d => d.InstructorID == id)
+                .ToListAsync();
+
+            deparments.ForEach(d => d.InstructorID = null);
+
+            _context.Instructors.Remove(instructor);
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RajUniEFCoreRP3.Pages.Courses
 {
-    public class EditModel : PageModel
+    public class EditModel : DepartmentNamePageModel
     {
         private readonly SchoolContext _context;
 
@@ -35,43 +35,37 @@ namespace RajUniEFCoreRP3.Pages.Courses
             {
                 return NotFound();
             }
-            ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID");
+
+            // Select current DepartmentID
+            PopulateDepartmentsDropDownList(_context, Course.DepartmentID);
             return Page();
         }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Course).State = EntityState.Modified;
+            var courseToUpdate = await _context.Courses.FindAsync(id);
 
-            try
+            if (courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync(courseToUpdate, "course", c => c.Credits, c => c.DepartmentID, c => c.Title))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CourseExists(Course.CourseID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool CourseExists(int id)
-        {
-            return _context.Courses.Any(e => e.CourseID == id);
+            // Select DepartmentID if TryUpdateModelAsync fails
+            PopulateDepartmentsDropDownList(_context, courseToUpdate.DepartmentID);
+            return Page();
         }
     }
 }
