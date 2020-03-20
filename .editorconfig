@@ -32,3 +32,6 @@ dotnet_diagnostic.CA1031.severity = none
 
 # CA1052: Static holder types should be Static or NotInheritable
 dotnet_diagnostic.CA1052.severity = none
+
+# CA1819: Properties should not return arrays
+dotnet_diagnostic.CA1819.severity = none

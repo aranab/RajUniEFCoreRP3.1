@@ -62,11 +62,11 @@ namespace RajUniEFCoreRP3.Pages.Instructors
             }
 
             if (await TryUpdateModelAsync(
-                instructorToUpdate, 
-                "instructor", 
-                i => i.FirstMidName, 
-                i => i.LastName, 
-                i => i.HireDate, 
+                instructorToUpdate,
+                "instructor",
+                i => i.FirstMidName,
+                i => i.LastName,
+                i => i.HireDate,
                 i => i.OfficeAssignment))
             {
                 if (string.IsNullOrWhiteSpace(instructorToUpdate.OfficeAssignment?.Location))
